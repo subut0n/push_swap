@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 16:41:28 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/20 12:32:26 by addzikow         ###   ########lyon.fr   */
+/*   Created: 2021/05/20 12:39:57 by addzikow          #+#    #+#             */
+/*   Updated: 2021/05/20 14:17:24 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include "../libft/libft.h"
-
-#include <limits.h>
-#include <stdio.h>
-
-enum stack
+long int	ft_atol(const char *str)
 {
-	A,
-	B
-};
+	long int	final;
+	int	sign;
+	int	i;
 
-#endif
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	sign = 1;
+	if ((str[i] == '+') || (str[i] == '-'))
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	final = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		final = final * 10 + sign * (str[i] - 48);
+		i++;
+	}
+	return (final);
+}

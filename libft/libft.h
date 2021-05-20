@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:18:54 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/05 10:58:56 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/20 12:41:24 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ size_t				ft_count_base(unsigned long nbr, const char *base);
 char				*ft_ltoa(long n);
 int					ft_count_digit(int n);
 size_t				ft_absolute(int nbr);
+long int			ft_atol(const char *str);
 
 #endif
