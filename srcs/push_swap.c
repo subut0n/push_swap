@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:43:50 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/20 15:26:45 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/21 14:13:12 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,6 @@ int check_arg(char *arg)
 	return (1);
 }
 
-void simplification(int *stack, int size)
-{
-	int i;
-	int less;
-	int position;
-
-	position = 1;
-	less = stack[1];
-	i = 1;
-	while (stack[i])
-	{
-		if ()
-	}
-}
-
 int main(int argc, char **argv)
 {
 	int i;
@@ -79,15 +64,6 @@ int main(int argc, char **argv)
 	{
 		stack[A][i] = ft_atoi(argv[i]);
 		stack[B][i] = 0;
-		printf("%d\n", stack[A][i]);
-		i++;
-	}
-	printf("\n");
-	simplification(stack[A], argc);
-	//
-	i = 1;
-	while (i < argc)
-	{
 		printf("%d\n", stack[A][i]);
 		i++;
 	}
