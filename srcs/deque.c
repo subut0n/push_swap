@@ -6,20 +6,20 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:03:33 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/27 14:01:46 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/28 17:06:01 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_deque_list *init_deque_list(void *ptr)
+t_deque_list *init_deque_list(int content)
 {
 	t_deque_list *deque_list;
 
 	deque_list = malloc(sizeof(t_deque_list));
 	if (!deque_list)
 		return (NULL);
-	deque_list->content = ptr;
+	deque_list->content = content;
 	deque_list->previous = NULL;
 	deque_list->next = NULL;
 	return (deque_list);
@@ -38,11 +38,12 @@ t_deque *init_deque(void)
 	return (deque);
 }
 
-void deque_add_front(t_deque *deque, void *ptr)
+void deque_add_front(t_deque *deque, int content)
 {
 	t_deque_list *temp;
 
-	temp = init_deque_list(ptr);
+	deque->size = deque->size + 1;
+	temp = init_deque_list(content);
 	if (!temp)
 		return ;
 	if (deque->size == 1)
@@ -56,11 +57,12 @@ void deque_add_front(t_deque *deque, void *ptr)
 	deque->head = deque->head->previous;
 }
 
-void deque_add_back(t_deque *deque, void *ptr)
+void deque_add_back(t_deque *deque, int content)
 {
 	t_deque_list *temp;
 
-	temp = init_deque_list(ptr);
+	deque->size = deque->size + 1;
+	temp = init_deque_list(content);
 	if (!temp)
 		return ;
 	if (deque->size == 1)
@@ -74,7 +76,7 @@ void deque_add_back(t_deque *deque, void *ptr)
 	deque->tail = deque->tail->next;
 }
 
-void deque_pop_front(t_deque *deque, void (*f)(void *))
+void deque_pop_front(t_deque *deque)
 {
 	t_deque_list *temp;
 
@@ -85,24 +87,19 @@ void deque_pop_front(t_deque *deque, void (*f)(void *))
 	deque->head = deque->head->next;
 	if (deque->head)
 		deque->head->previous = NULL;
-	if (f)
-		f(temp->content);
 	free(temp);
 }
 
-void	deque_pop_back(t_deque *deque, void (*f)(void *))
+void	deque_pop_back(t_deque *deque)
 {
 	t_deque_list *temp;
 
 	if (deque->size < 1 || !deque->tail)
 		return ;
 	deque->size = deque->size - 1;
-	temp = malloc(sizeof(t_deque_list));
 	temp = deque->tail;
 	deque->tail = deque->tail->previous;
 	if (deque->tail)
 		deque->tail->next = NULL;
-	if (f)
-		f(temp->content);
 	free(temp);
 }

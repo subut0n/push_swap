@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:43:50 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/27 14:12:31 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/28 09:59:13 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int main(int argc, char **argv)
 		printf("Error");
 		return (1);
 	}
+	parse(argc,argv);
 }
