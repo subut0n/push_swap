@@ -45,9 +45,9 @@ void	init_stack(t_deque* stack, int size, int *convargs)
 {
 	int i;
 
-	i = 0;
-	while (i++ <= size)
-		deque_add_front(stack,convargs[i]);
+	i = -1;
+	while (++i < size)
+		deque_add_back(stack, convargs[i]);
 }
 
 void parse(int ac, char **av)
@@ -63,11 +63,14 @@ void parse(int ac, char **av)
 	size = ac - 1;
 	init_stack(stack[A], size, converted_args);
 	i = 0;
+	////
 	while (converted_args[i])
 	{
 		printf("%d\n", converted_args[i]);
 		i++;
 	}
+	printf("value = %d\n", stack[A]->head->content);
 	printf("value = %d\n", stack[A]->tail->content);
+	////
 	free(converted_args); ///NE PAS OUBLIER
 }
