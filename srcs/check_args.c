@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 11:56:37 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/28 12:28:44 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 15:26:25 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int check_dup(int ac, char **av)
 	int *value;
 
 	value = malloc(sizeof(int) * (ac - 1));
+
 	if (!value)
 		return (0);
 	i = 0;
@@ -57,7 +58,7 @@ int check_dup(int ac, char **av)
 	while (i < ac - 1)
 	{
 		j = i + 1;
-		while (j < ac)
+		while (j < ac - 1)
 		{
 			if (value[i] == value[j])
 				return (0);
@@ -65,6 +66,7 @@ int check_dup(int ac, char **av)
 		}
 		i++;
 	}
+	free(value);
 	return (1);
 }
 
@@ -74,10 +76,12 @@ int	check_all_args(int ac, char **av)
 
 	if (ac == 1)
 		return (1);
+	if (!check_dup(ac, av))
+		return (0);
 	i = 1;
 	while (i < ac)
 	{
-		if (!check_arg(av[i]) || !check_limit(av[i]) || !check_dup(ac, av))
+		if (!check_arg(av[i]) || !check_limit(av[i])) 
 			return (0);
 		i++;
 	}

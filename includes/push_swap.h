@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:41:28 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/28 17:04:43 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 15:39:23 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ int 			check_limit(char *arg);
 int 			check_arg(char *arg);
 int				check_dup(int ac, char **av);
 int				check_all_args(int ac, char **av);
-void			parse(int ac, char **av);
-
+void			parse(t_deque *stack, int ac, char **av);
+int				find_min(t_deque *stack);
+int				find_pos(t_deque *stack, int nb);
+int				is_stack_sorted(t_deque *stack);
 
 #endif

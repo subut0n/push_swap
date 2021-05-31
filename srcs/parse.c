@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:43:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/28 17:12:05 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 14:44:30 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,17 @@ void	init_stack(t_deque* stack, int size, int *convargs)
 		deque_add_back(stack, convargs[i]);
 }
 
-void parse(int ac, char **av)
+void parse(t_deque *stack, int ac, char **av)
 {
-	t_deque *stack[2];
 	int size;
 	int *converted_args;
 	int i;
 
-	stack[A] = init_deque();
-	stack[B] = init_deque();
 	converted_args = ft_argstoints(ac, av);
 	size = ac - 1;
-	init_stack(stack[A], size, converted_args);
+	init_stack(stack, size, converted_args);
 	i = 0;
-	////
-	while (converted_args[i])
-	{
-		printf("%d\n", converted_args[i]);
-		i++;
-	}
-	printf("value = %d\n", stack[A]->head->content);
-	printf("value = %d\n", stack[A]->tail->content);
-	////
+	printf("head = %d\n", stack->head->content);
+	printf("tail = %d\n", stack->tail->content);
 	free(converted_args); ///NE PAS OUBLIER
 }
