@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:41:28 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/31 15:39:23 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/06/01 16:23:43 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void			deque_add_front(t_deque *deque, int content);
 void			deque_add_back(t_deque *deque, int content);
 void			deque_pop_front(t_deque *deque);
 void			deque_pop_back(t_deque *deque);
+void			deque_free(t_deque *deque);
 
 
 void			sa(t_deque *stack);
@@ -59,21 +60,20 @@ void			rra(t_deque *stack);
 void			rrb(t_deque *stack);
 void			rrr(t_deque *stack[2]);
 ///////////////////////////////////////////////////////////////////////////
-typedef struct s_double
-{
-	int content;
-	struct s_double *previous;
-	struct s_double *next;
-} double_list;
-///////////////////////////////////////////////////////////////////////////
 
 int 			check_limit(char *arg);
 int 			check_arg(char *arg);
 int				check_dup(int ac, char **av);
 int				check_all_args(int ac, char **av);
+
 void			parse(t_deque *stack, int ac, char **av);
+
 int				find_min(t_deque *stack);
 int				find_pos(t_deque *stack, int nb);
+
 int				is_stack_sorted(t_deque *stack);
+int				is_stack_reverse_sorted(t_deque *stack);
+
+void			small_group(t_deque *stack[2]);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 11:56:37 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/31 15:26:25 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 15:55:23 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int check_dup(int ac, char **av)
 	int *value;
 
 	value = malloc(sizeof(int) * (ac - 1));
-
 	if (!value)
 		return (0);
 	i = 0;

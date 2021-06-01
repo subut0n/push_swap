@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:03:33 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/28 17:06:01 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/06/01 16:40:10 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_deque *init_deque(void)
 {
 	t_deque *deque;
 
-	deque = malloc(sizeof(deque));
+	deque = malloc(sizeof(t_deque));
 	if (!deque)
 		return (NULL);
 	deque->head = NULL;
@@ -80,7 +80,7 @@ void deque_pop_front(t_deque *deque)
 {
 	t_deque_list *temp;
 
-	if (deque->size < 1 || !deque->tail)
+	if (deque->size < 1 || !deque->head)
 		return ;
 	deque->size = deque->size - 1;
 	temp = deque->head;
@@ -102,4 +102,11 @@ void	deque_pop_back(t_deque *deque)
 	if (deque->tail)
 		deque->tail->next = NULL;
 	free(temp);
+}
+
+void	deque_free(t_deque *deque)
+{
+	while (deque->head)
+		deque_pop_front(deque);
+	free(deque);
 }

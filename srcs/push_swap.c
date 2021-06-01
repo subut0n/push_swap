@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:43:50 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/31 15:40:34 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/06/01 16:45:42 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main(int argc, char **argv)
 	int min_value;
 	int pos;
 	int sorted;
+
+	t_deque_list *temp;
 
 	stack[A] = init_deque();
 	stack[B] = init_deque();
@@ -34,4 +36,41 @@ int main(int argc, char **argv)
 	printf("pos = %d\n", pos);
 	sorted = is_stack_sorted(stack[A]);
 	printf("sorted = %d\n", sorted);
+	if (sorted == 1)
+		return (0);
+	else
+		small_group(stack);
+	//// afficher la liste
+	temp = stack[A]->head;
+	while (temp)
+	{
+		printf("ici = %d\n", temp->content);
+		temp = temp->next;
+	}
+	/////////////////////
+	deque_free(stack[A]);
+	deque_free(stack[B]);
+}
+
+void	small_group(t_deque *stack[2])
+{
+	if (stack[A]->size > 3)
+	{
+		while (stack[A]->size != 3)
+			pb(stack);
+	}
+	while (!is_stack_sorted(stack[A]))
+	{
+		if (stack[B]->size != 0 && !is_stack_sorted(stack[B]))
+			rb(stack[B]);
+		while (stack[A]->size != 0)
+		{
+			if (stack[A]->head->content == find_min(stack[A]))
+				pb(stack);
+			else
+				ra(stack[A]);
+		}
+		while (stack[B]->size > 0)
+			pa(stack);
+	}
 }

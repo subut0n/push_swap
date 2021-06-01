@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:43:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/31 14:44:30 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 15:54:12 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void parse(t_deque *stack, int ac, char **av)
 	i = 0;
 	printf("head = %d\n", stack->head->content);
 	printf("tail = %d\n", stack->tail->content);
+	printf("size = %d\n", stack->size);
 	free(converted_args); ///NE PAS OUBLIER
 }
