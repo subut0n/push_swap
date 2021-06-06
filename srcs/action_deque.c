@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_deque.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 14:07:36 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/28 17:02:18 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/06/06 15:31:20 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void sa(t_deque *stack)
 	content[0] = stack->head->content;
 	deque_pop_front(stack);
 	content[1] = stack->head->content;
+	deque_pop_front(stack);
 	deque_add_front(stack, content[0]);
 	deque_add_front(stack, content[1]);
 }
@@ -30,6 +31,7 @@ void sb(t_deque *stack)
 	content[0] = stack->head->content;
 	deque_pop_front(stack);
 	content[1] = stack->head->content;
+	deque_pop_front(stack);
 	deque_add_front(stack, content[0]);
 	deque_add_front(stack, content[1]);
 }

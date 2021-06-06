@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:41:28 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/01 16:23:43 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/06/06 16:07:20 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void			deque_add_back(t_deque *deque, int content);
 void			deque_pop_front(t_deque *deque);
 void			deque_pop_back(t_deque *deque);
 void			deque_free(t_deque *deque);
-
 
 void			sa(t_deque *stack);
 void			sb(t_deque *stack);
