@@ -6,39 +6,47 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:43:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/07 10:33:03 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/06/08 14:13:26 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int *ft_argstoints(int ac, char **av)
+static int	*replace_crescendo(int *conv_args)
 {
-	char **fchar;
-	int *fint;
 	int i;
+	int *ret;
+	int size;
+	int smallest[2];
+	int num;
 
-	fchar = malloc(sizeof(char *) * (ac));
-	if (!fchar)
-		return (NULL) ;
-	i = 0;
-	while (i < ac - 1)
+	size = 0;
+	while (conv_args[size])
+		size++;
+	ret = malloc(sizeof(int) * size);
+	if (!ret)
+		return (NULL);
+	num = 0;
+	smallest[0] = conv_args[0];
+	smallest[1] = INT_MIN;
+	while (size != 0)
 	{
-		fchar[i] = av[i + 1];
-		i++;
+		i = 0;
+		while (conv_args[i])
+		{
+			if (conv_args[i] < smallest[0] && conv_args[i] > smallest[1])
+				smallest[0] = conv_args[i];
+			i++;
+		}
+		i = 0;
+		while (conv_args[i] != smallest[0])
+			i++;
+		ret[i] = num++;
+		smallest[1] = conv_args[i];
+		smallest[0] = INT_MAX;
+		size--;
 	}
-	fchar[ac - 1] = NULL;
-	fint = malloc(sizeof(int *) * (ac));
-	if (!fint)
-		return(NULL);
-	i = 0;
-	while (fchar[i])
-	{
-		fint[i] = ft_atoi(fchar[i]);
-		i++;
-	}
-	fint[ac - 1] = '\0';
-	return (fint);
+	return (ret);
 }
 
 void	init_stack(t_deque* stack, int size, int *convargs)
@@ -54,11 +62,27 @@ void parse(t_deque *stack, int ac, char **av)
 {
 	int size;
 	int *converted_args;
-	int i;
+	// int i;
 
 	converted_args = ft_argstoints(ac, av);
+	// ////////
+	// i = 0;
+	// while (converted_args[i])
+	// {
+	// 	printf("conv = %d\n", converted_args[i]);
+	// 	i++;
+	// }
+	// ///////
+	converted_args = replace_crescendo(converted_args);
+	// ////////
+	// i = 0;
+	// while (converted_args[i])
+	// {
+	// 	printf("cres = %d\n", converted_args[i]);
+	// 	i++;
+	// }
+	// ///////
 	size = ac - 1;
 	init_stack(stack, size, converted_args);
-	i = 0;
 	free(converted_args); ///NE PAS OUBLIER
 }

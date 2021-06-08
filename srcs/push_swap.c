@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:43:50 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/08 09:59:01 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:03:03 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 	int pos;
 	int sorted;
 
-	// t_deque_list *temp;
+	t_deque_list *temp;
 
 	stack[A] = init_deque();
 	stack[B] = init_deque();
@@ -37,15 +37,15 @@ int main(int argc, char **argv)
 		return (0);
 	if (stack[A]->size <= 5)
 		small_group(stack);
-	// else
-	// 	big_group(stack);
+	else
+		big_group(stack);
 	//// afficher la liste
-	// temp = stack[A]->head;
-	// while (temp)
-	// {
-	// 	printf("ici = %d\n", temp->content);
-	// 	temp = temp->next;
-	// }
+	temp = stack[A]->head;
+	while (temp)
+	{
+		printf("ici = %d\n", temp->content);
+		temp = temp->next;
+	}
 	/////////////////////
 	deque_free(stack[A]);
 	deque_free(stack[B]);
@@ -91,7 +91,7 @@ void	small_group(t_deque *stack[2])
 			act_and_write(stack, "pa");
 }
 
-// void	big_group(t_deque *stack[2])
-// {
-
-// }
+void	big_group(t_deque *stack[2])
+{
+	
+}

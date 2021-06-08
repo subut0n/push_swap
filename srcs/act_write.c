@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 11:07:05 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/07 14:30:55 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/06/08 10:01:57 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,4 @@ void	act_and_write(t_deque *stack[2], char *str)
         do_rotate(stack, str);
     if ((!ft_strncmp(str, "rra", 4)) || (!ft_strncmp(str, "rrb", 4)) || (!ft_strncmp(str, "rrr", 4)))
         do_rev_rotate(stack, str);
-	
 }

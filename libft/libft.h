@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:18:54 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/20 12:41:24 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/06/08 10:08:20 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ char				*ft_ltoa(long n);
 int					ft_count_digit(int n);
 size_t				ft_absolute(int nbr);
 long int			ft_atol(const char *str);
+int 				*ft_argstoints(int ac, char **av);
 
 #endif
