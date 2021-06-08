@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:41:28 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/06 16:07:20 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/06/07 14:41:02 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,13 @@ int				find_pos(t_deque *stack, int nb);
 int				is_stack_sorted(t_deque *stack);
 int				is_stack_reverse_sorted(t_deque *stack);
 
+void    do_push(t_deque *stack[2], char *str);
+void    do_swap(t_deque *stack[2], char *str);
+void    do_rotate(t_deque *stack[2], char *str);
+void    do_rev_rotate(t_deque *stack[2], char *str);
+void	act_and_write(t_deque *stack[2], char *str);
+
 void			small_group(t_deque *stack[2]);
+void			big_group(t_deque *stack[2]);
 
 #endif

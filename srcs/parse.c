@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:43:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/31 15:54:12 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/06/07 10:33:03 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,5 @@ void parse(t_deque *stack, int ac, char **av)
 	size = ac - 1;
 	init_stack(stack, size, converted_args);
 	i = 0;
-	printf("head = %d\n", stack->head->content);
-	printf("tail = %d\n", stack->tail->content);
-	printf("size = %d\n", stack->size);
 	free(converted_args); ///NE PAS OUBLIER
 }
