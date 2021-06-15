@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:43:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/08 14:13:26 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/06/15 16:03:28 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,9 @@ void parse(t_deque *stack, int ac, char **av)
 {
 	int size;
 	int *converted_args;
-	// int i;
 
 	converted_args = ft_argstoints(ac, av);
-	// ////////
-	// i = 0;
-	// while (converted_args[i])
-	// {
-	// 	printf("conv = %d\n", converted_args[i]);
-	// 	i++;
-	// }
-	// ///////
 	converted_args = replace_crescendo(converted_args);
-	// ////////
-	// i = 0;
-	// while (converted_args[i])
-	// {
-	// 	printf("cres = %d\n", converted_args[i]);
-	// 	i++;
-	// }
-	// ///////
 	size = ac - 1;
 	init_stack(stack, size, converted_args);
 	free(converted_args); ///NE PAS OUBLIER

@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:41:28 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/07 14:41:02 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/06/15 14:10:07 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void    do_rev_rotate(t_deque *stack[2], char *str);
 void	act_and_write(t_deque *stack[2], char *str);
 
 void			small_group(t_deque *stack[2]);
+int				is_exception(t_deque *stack[2]);
 void			big_group(t_deque *stack[2]);
 
 #endif
