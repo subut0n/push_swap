@@ -6,18 +6,18 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:43:50 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/15 15:58:06 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/04 00:19:51 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_deque *stack[2];
-	int min_value;
-	int pos;
-	int sorted;
+	t_deque	*stack[2];
+	int		min_value;
+	int		pos;
+	int		sorted;
 
 	stack[A] = init_deque();
 	stack[B] = init_deque();

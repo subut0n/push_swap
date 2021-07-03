@@ -15,13 +15,12 @@ GCC			= gcc
 COMP_INC	= -I$(PATH_LIBFT) -I$(PATH_INCS)
 RM			= rm -rf
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror 
 
 all:	 $(PATH_OBJS) $(NAME)
 
 $(NAME):	$(OBJS) $(INCS) $(LIBFT)
-			mv libft/libft.a push_swap.a
-			ar rcs $(NAME) $(OBJS)
+			$(CC) $(CFLAGS) srcs/*.c  $(LIBFT) -o push_swap
 
 $(PATH_OBJS)/%.o : $(PATH_SRCS)/*/%.c $(INCS)
 				$(GCC) $(CFLAGS) $(COMP_INC) -c $< -o $@
@@ -34,10 +33,12 @@ $(LIBFT):
 
 clean:
 		$(RM) $(PATH_OBJS)
+		$(RM) push_swap
 		$(MAKE) -C $(PATH_LIBFT) clean
 
 fclean:	clean
 		$(RM) $(NAME)
+		$(RM) push_swap
 		$(MAKE) -C $(PATH_LIBFT) fclean
 
 re:		fclean all

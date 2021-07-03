@@ -1,47 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obtain_pos.c                                       :+:      :+:    :+:   */
+/*   action_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 14:25:07 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/03 23:59:00 by addzikow         ###   ########.fr       */
+/*   Created: 2021/05/27 14:07:36 by addzikow          #+#    #+#             */
+/*   Updated: 2021/07/04 00:09:53 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	find_min(t_deque *stack)
+void	ra(t_deque *stack)
 {
-	t_deque_list	*temp;
-	int				i;
-	int				min;
+	int	content;
 
-	temp = stack->tail;
-	min = INT_MAX;
-	i = 0;
-	while (i < stack->size)
+	content = stack->head->content;
+	if (stack->size > 1)
 	{
-		if (temp->content < min)
-			min = temp->content;
-		temp = temp->previous;
-		i++;
+		deque_pop_front(stack);
+		deque_add_back(stack, content);
 	}
-	return (min);
 }
 
-int	find_pos(t_deque *stack, int nb)
+void	rb(t_deque *stack)
 {
-	t_deque_list	*temp;
-	int				count;
+	int	content;
 
-	temp = stack->head;
-	count = 0;
-	while (temp->content != nb)
+	content = stack->head->content;
+	if (stack->size > 1)
 	{
-		temp = temp->next;
-		count++;
+		deque_pop_front(stack);
+		deque_add_back(stack, content);
 	}
-	return (count);
+}
+
+void	rr(t_deque *stack[2])
+{
+	ra(stack[A]);
+	rb(stack[B]);
 }

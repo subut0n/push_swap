@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:46:33 by addzikow          #+#    #+#             */
-/*   Updated: 2021/06/14 15:47:24 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/04 00:29:41 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	is_exception(t_deque *stack[2])
 		act_and_write(stack, "rra");
 		return (1);
 	}
-	if (stack[A]->size == 3 &&
-	((stack[A]->head->content > stack[A]->head->next->content) 
-		&& (stack[A]->tail->content > stack[A]->head->content)))
+	if (stack[A]->size == 3
+		&& ((stack[A]->head->content > stack[A]->head->next->content)
+			&& (stack[A]->tail->content > stack[A]->head->content)))
 	{
 		act_and_write(stack, "sa");
 		return (1);
