@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:47:43 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/04 00:27:54 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/04 16:13:10 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 void	solve_it(t_deque *stack[2], int max_bits, int size)
 {
-	int	i[2];
+	int	i;
+	int j;
 	int	a_top;
 
-	i[0] = -1;
-	while (++i[0] < max_bits)
+	i = -1;
+	while (++i < max_bits)
 	{
-		i[1] = -1;
-		while (++i[1] < size)
+		j = -1;
+		while (++j < size)
 		{
 			a_top = stack[A]->head->content;
-			if (((a_top >> i[0]) & 1) == 1)
+			if (((a_top >> i) & 1) == 1)
 				act_and_write(stack, "ra");
 			else
 				act_and_write(stack, "pb");
