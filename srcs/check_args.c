@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 11:56:37 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/03 23:56:10 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/04 16:03:29 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int	check_all_args(int ac, char **av)
 {
 	int	i;
 
-	if (ac <= 1)
-		return (0);
+	if (ac == 1)
+		exit(EXIT_SUCCESS);
 	if (!check_dup(ac, av))
 		return (0);
 	i = 1;
