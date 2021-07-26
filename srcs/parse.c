@@ -6,17 +6,17 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:43:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/26 16:59:54 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/26 17:33:05 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void operate_crescendo(int *conv_args, int size, int value[2], int *ret)
+static void	operate_crescendo(int *conv_args, int size, int value[2], int *ret)
 {
-	int save;
-	int num;
-	int i;
+	int	save;
+	int	num;
+	int	i;
 
 	save = size;
 	num = 0;
@@ -29,7 +29,7 @@ static void operate_crescendo(int *conv_args, int size, int value[2], int *ret)
 				value[0] = conv_args[i];
 			i++;
 		}
-		i = 0; 
+		i = 0;
 		while (conv_args[i] != value[0])
 			i++;
 		ret[i] = num++;
@@ -39,16 +39,16 @@ static void operate_crescendo(int *conv_args, int size, int value[2], int *ret)
 	}
 }
 
-static int *replace_crescendo(int *conv_args, int size)
+static int	*replace_crescendo(int *conv_args, int size)
 {
-	int *ret;
-	int value[2];
+	int	*ret;
+	int	value[2];
 
 	ret = malloc(sizeof(int) * size);
 	if (!ret)
 		return (NULL);
-	value[0] = conv_args[0]; 
-	value[1] = INT_MIN;  
+	value[0] = conv_args[0];
+	value[1] = INT_MIN;
 	operate_crescendo(conv_args, size, value, ret);
 	return (ret);
 }

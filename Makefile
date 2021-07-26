@@ -15,7 +15,7 @@ GCC			= gcc
 COMP_INC	= -I$(PATH_LIBFT) -I$(PATH_INCS)
 RM			= rm -rf
 
-CFLAGS		= -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS		= -Wall -Wextra -Werror
 
 all:	 $(PATH_OBJS) $(NAME)
 
