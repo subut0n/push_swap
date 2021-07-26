@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 15:47:43 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/04 16:13:10 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/26 15:27:52 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	solve_it(t_deque *stack[2], int max_bits, int size)
 {
 	int	i;
-	int j;
+	int	j;
 	int	a_top;
 
 	i = -1;

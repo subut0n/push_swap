@@ -6,52 +6,50 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:43:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/04 00:19:16 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/26 16:59:54 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	crescendo_operation(int *ret, int size, int smallest[2], int *conv_args)
+static void operate_crescendo(int *conv_args, int size, int value[2], int *ret)
 {
-	int	i;
-	int	num;
+	int save;
+	int num;
+	int i;
 
+	save = size;
 	num = 0;
-	while (size != 0)
+	while (size)
 	{
 		i = 0;
-		while (conv_args[i])
+		while (i < save)
 		{
-			if (conv_args[i] < smallest[0] && conv_args[i] > smallest[1])
-				smallest[0] = conv_args[i];
+			if (conv_args[i] < value[0] && conv_args[i] > value[1])
+				value[0] = conv_args[i];
 			i++;
 		}
-		i = 0;
-		while (conv_args[i] != smallest[0])
+		i = 0; 
+		while (conv_args[i] != value[0])
 			i++;
 		ret[i] = num++;
-		smallest[1] = conv_args[i];
-		smallest[0] = INT_MAX;
+		value[0] = INT_MAX;
+		value[1] = conv_args[i];
 		size--;
 	}
 }
 
-static int	*replace_crescendo(int *conv_args)
+static int *replace_crescendo(int *conv_args, int size)
 {
-	int	*ret;
-	int	size;
-	int	smallest[2];
+	int *ret;
+	int value[2];
 
-	size = 0;
-	while (conv_args[size])
-		size++;
 	ret = malloc(sizeof(int) * size);
 	if (!ret)
 		return (NULL);
-	smallest[0] = conv_args[0];
-	smallest[1] = INT_MIN;
-	crescendo_operation(ret, size, smallest, conv_args);
+	value[0] = conv_args[0]; 
+	value[1] = INT_MIN;  
+	operate_crescendo(conv_args, size, value, ret);
 	return (ret);
 }
 
@@ -69,9 +67,9 @@ void	parse(t_deque *stack, int ac, char **av)
 	int	size;
 	int	*converted_args;
 
-	converted_args = ft_argstoints(ac, av);
-	converted_args = replace_crescendo(converted_args);
 	size = ac - 1;
+	converted_args = ft_argstoints(ac, av);
+	converted_args = replace_crescendo(converted_args, size);
 	init_stack(stack, size, converted_args);
 	free(converted_args);
 }

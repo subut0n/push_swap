@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 10:07:10 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/04 00:45:39 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/26 15:31:24 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@ int	*ft_argstoints(int ac, char **av)
 	fchar = malloc(sizeof(char *) * (ac));
 	if (!fchar)
 		return (NULL);
-	i = 0;
-	while (i < ac - 1)
-	{
+	i = -1;
+	while (++i < ac - 1)
 		fchar[i] = av[i + 1];
-		i++;
-	}
 	fchar[ac - 1] = NULL;
 	fint = malloc(sizeof(int *) * (ac));
 	if (!fint)
@@ -38,5 +35,6 @@ int	*ft_argstoints(int ac, char **av)
 		i++;
 	}
 	fint[ac - 1] = '\0';
+	free (fchar);
 	return (fint);
 }

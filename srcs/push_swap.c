@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:43:50 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/04 16:04:19 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/26 15:26:50 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_deque	*stack[2];
-	int		min_value;
-	int		pos;
 	int		sorted;
 
 	if (!check_all_args(argc, argv))
@@ -27,8 +25,6 @@ int	main(int argc, char **argv)
 	stack[A] = init_deque();
 	stack[B] = init_deque();
 	parse(stack[A], argc, argv);
-	min_value = find_min(stack[A]);
-	pos = find_pos(stack[A], min_value);
 	sorted = is_stack_sorted(stack[A]);
 	if (sorted == 1)
 		return (0);
