@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:43:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/26 17:33:05 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/29 13:44:22 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static int	*replace_crescendo(int *conv_args, int size)
 	value[0] = conv_args[0];
 	value[1] = INT_MIN;
 	operate_crescendo(conv_args, size, value, ret);
+	free(conv_args);
 	return (ret);
 }
 

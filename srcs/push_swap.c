@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:43:50 by addzikow          #+#    #+#             */
-/*   Updated: 2021/07/26 15:26:50 by addzikow         ###   ########.fr       */
+/*   Updated: 2021/07/29 15:18:48 by addzikow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@ int	main(int argc, char **argv)
 	parse(stack[A], argc, argv);
 	sorted = is_stack_sorted(stack[A]);
 	if (sorted == 1)
+	{
+		deque_free(stack[A]);
+		deque_free(stack[B]);
 		return (0);
+	}
 	if (stack[A]->size <= 5)
 		small_group(stack);
 	else
 		big_group(stack);
 	deque_free(stack[A]);
 	deque_free(stack[B]);
+	return (0);
 }
