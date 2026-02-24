@@ -27,8 +27,10 @@ int	check_arg(char *arg)
 	int	i;
 
 	i = 0;
-	if (arg[0] == '-')
+	if (arg[0] == '-' || arg[0] == '+')
 		i++;
+	if (!arg[i])
+		return (0);
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
@@ -57,7 +59,10 @@ int	check_dup(int ac, char **av)
 		while (j < ac - 1)
 		{
 			if (value[i] == value[j++])
+			{
+				free(value);
 				return (0);
+			}
 		}
 	}
 	free(value);
@@ -70,8 +75,6 @@ int	check_all_args(int ac, char **av)
 
 	if (ac == 1)
 		exit(EXIT_SUCCESS);
-	if (!check_dup(ac, av))
-		return (0);
 	i = 1;
 	while (i < ac)
 	{
@@ -79,5 +82,7 @@ int	check_all_args(int ac, char **av)
 			return (0);
 		i++;
 	}
+	if (!check_dup(ac, av))
+		return (0);
 	return (1);
 }

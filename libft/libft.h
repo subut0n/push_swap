@@ -77,5 +77,6 @@ int					ft_count_digit(int n);
 size_t				ft_absolute(int nbr);
 long int			ft_atol(const char *str);
 int					*ft_argstoints(int ac, char **av);
+char				**ft_split(char const *s, char c);
 
 #endif

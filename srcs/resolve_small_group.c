@@ -12,42 +12,64 @@
 
 #include "../includes/push_swap.h"
 
-int	is_exception(t_deque *stack[2])
+void	sort_three(t_deque *stack[2])
 {
-	if (stack[A]->size == 3 && is_stack_reverse_sorted(stack[A]))
+	int	a;
+	int	b;
+	int	c;
+
+	a = stack[A]->head->content;
+	b = stack[A]->head->next->content;
+	c = stack[A]->tail->content;
+	if (a > b && b < c && a < c)
+		act_and_write(stack, "sa");
+	else if (a > b && b > c)
 	{
 		act_and_write(stack, "sa");
 		act_and_write(stack, "rra");
-		return (1);
 	}
-	if (stack[A]->size == 3
-		&& ((stack[A]->head->content > stack[A]->head->next->content)
-			&& (stack[A]->tail->content > stack[A]->head->content)))
+	else if (a > b && b < c && a > c)
+		act_and_write(stack, "ra");
+	else if (a < b && b > c && a < c)
 	{
 		act_and_write(stack, "sa");
-		return (1);
+		act_and_write(stack, "ra");
 	}
-	return (0);
+	else if (a < b && b > c && a > c)
+		act_and_write(stack, "rra");
+}
+
+static void	push_min_to_b(t_deque *stack[2])
+{
+	int	min;
+	int	pos;
+
+	min = find_min(stack[A]);
+	pos = find_pos(stack[A], min);
+	if (pos <= stack[A]->size / 2)
+	{
+		while (stack[A]->head->content != min)
+			act_and_write(stack, "ra");
+	}
+	else
+	{
+		while (stack[A]->head->content != min)
+			act_and_write(stack, "rra");
+	}
+	act_and_write(stack, "pb");
 }
 
 void	small_group(t_deque *stack[2])
 {
-	if (is_exception(stack))
-		return ;
-	while (stack[A]->size > 2)
+	if (stack[A]->size == 2)
 	{
-		if (find_pos(stack[A], find_min(stack[A])) <= ((stack[A]->size) / 2))
-		{
-			if (stack[A]->head->content == find_min(stack[A]))
-				act_and_write(stack, "pb");
-			else
-				act_and_write(stack, "ra");
-		}
-		else
-			act_and_write(stack, "rra");
+		if (!is_stack_sorted(stack[A]))
+			act_and_write(stack, "sa");
+		return ;
 	}
-	if (!is_stack_sorted(stack[A]))
-		act_and_write(stack, "sa");
+	while (stack[A]->size > 3)
+		push_min_to_b(stack);
+	sort_three(stack);
 	while (stack[B]->size > 0)
 		act_and_write(stack, "pa");
 }

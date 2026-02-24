@@ -1,44 +1,78 @@
-.PHONY: all clean fclean re
-NAME	= push_swap.a
+.PHONY: all clean fclean re bonus
 
-PATH_INCS 	= includes
-PATH_SRCS 	= srcs
-PATH_OBJS 	= objs
+NAME		= push_swap
+NAME_BONUS	= checker
+
+PATH_INCS	= includes
+PATH_SRCS	= srcs
+PATH_OBJS	= objs
 PATH_LIBFT	= libft
-LIBFT		= $(addprefix libft/, libft.a)
+LIBFT		= $(PATH_LIBFT)/libft.a
 
-SRCS		=	$(addprefix $(PATH_SRCS)/, push_swap.c)
-OBJS		=	$(addprefix $(PATH_OBJS)/, $(notdir $(SRCS:.c=.o)))
-INCS		=	$(PATH_INCS)/push_swap.h $(PATH_LIBFT)/libft.h
+SRCS		= $(PATH_SRCS)/push_swap.c \
+			  $(PATH_SRCS)/parse.c \
+			  $(PATH_SRCS)/check_args.c \
+			  $(PATH_SRCS)/deque.c \
+			  $(PATH_SRCS)/deque_utils.c \
+			  $(PATH_SRCS)/action_swap.c \
+			  $(PATH_SRCS)/action_push.c \
+			  $(PATH_SRCS)/action_rotate.c \
+			  $(PATH_SRCS)/action_rev_rotate.c \
+			  $(PATH_SRCS)/act_write.c \
+			  $(PATH_SRCS)/obtain_pos.c \
+			  $(PATH_SRCS)/verif.c \
+			  $(PATH_SRCS)/resolve_small_group.c \
+			  $(PATH_SRCS)/resolve_big_group.c
 
-GCC			= gcc
+SRCS_BONUS	= $(PATH_SRCS)/checker.c \
+			  $(PATH_SRCS)/parse.c \
+			  $(PATH_SRCS)/check_args.c \
+			  $(PATH_SRCS)/deque.c \
+			  $(PATH_SRCS)/deque_utils.c \
+			  $(PATH_SRCS)/action_swap.c \
+			  $(PATH_SRCS)/action_push.c \
+			  $(PATH_SRCS)/action_rotate.c \
+			  $(PATH_SRCS)/action_rev_rotate.c \
+			  $(PATH_SRCS)/act_write.c \
+			  $(PATH_SRCS)/obtain_pos.c \
+			  $(PATH_SRCS)/verif.c \
+			  $(PATH_SRCS)/resolve_small_group.c \
+			  $(PATH_SRCS)/resolve_big_group.c \
+			  $(PATH_SRCS)/get_next_line.c
+
+OBJS		= $(patsubst $(PATH_SRCS)/%.c,$(PATH_OBJS)/%.o,$(SRCS))
+OBJS_BONUS	= $(patsubst $(PATH_SRCS)/%.c,$(PATH_OBJS)/%.o,$(SRCS_BONUS))
+INCS		= $(PATH_INCS)/push_swap.h $(PATH_LIBFT)/libft.h
+
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
 COMP_INC	= -I$(PATH_LIBFT) -I$(PATH_INCS)
 RM			= rm -rf
 
-CFLAGS		= -Wall -Wextra -Werror
+all: $(NAME)
 
-all:	 $(PATH_OBJS) $(NAME)
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(COMP_INC) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(NAME):	$(OBJS) $(INCS) $(LIBFT)
-			$(CC) $(CFLAGS) srcs/*.c  $(LIBFT) -o push_swap
+bonus: $(NAME_BONUS)
 
-$(PATH_OBJS)/%.o : $(PATH_SRCS)/*/%.c $(INCS)
-				$(GCC) $(CFLAGS) $(COMP_INC) -c $< -o $@
+$(NAME_BONUS): $(LIBFT) $(OBJS_BONUS)
+	$(CC) $(CFLAGS) $(COMP_INC) $(OBJS_BONUS) $(LIBFT) -o $(NAME_BONUS)
 
-$(PATH_OBJS):
-		mkdir -p $(PATH_OBJS)
+$(PATH_OBJS)/%.o: $(PATH_SRCS)/%.c $(INCS)
+	@mkdir -p $(PATH_OBJS)
+	$(CC) $(CFLAGS) $(COMP_INC) -c $< -o $@
 
 $(LIBFT):
-		$(MAKE) -C $(PATH_LIBFT)
+	$(MAKE) -C $(PATH_LIBFT)
 
 clean:
-		$(RM) $(PATH_OBJS)
-		$(RM) push_swap
-		$(MAKE) -C $(PATH_LIBFT) clean
+	$(RM) $(PATH_OBJS)
+	$(MAKE) -C $(PATH_LIBFT) clean
 
-fclean:	clean
-		$(RM) $(NAME)
-		$(RM) push_swap
-		$(MAKE) -C $(PATH_LIBFT) fclean
+fclean: clean
+	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
+	$(MAKE) -C $(PATH_LIBFT) fclean
 
-re:		fclean all
+re: fclean all

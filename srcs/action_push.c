@@ -16,22 +16,20 @@ void	pa(t_deque *stack[2])
 {
 	int	content;
 
+	if (stack[B]->size < 1)
+		return ;
 	content = stack[B]->head->content;
-	if (stack[B]->size > 0)
-	{
-		deque_pop_front(stack[B]);
-		deque_add_front(stack[A], content);
-	}
+	deque_pop_front(stack[B]);
+	deque_add_front(stack[A], content);
 }
 
 void	pb(t_deque *stack[2])
 {
 	int	content;
 
+	if (stack[A]->size < 1)
+		return ;
 	content = stack[A]->head->content;
-	if (stack[A]->size > 0)
-	{
-		deque_pop_front(stack[A]);
-		deque_add_front(stack[B], content);
-	}
+	deque_pop_front(stack[A]);
+	deque_add_front(stack[B], content);
 }

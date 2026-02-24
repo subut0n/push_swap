@@ -16,7 +16,6 @@
 # include "../libft/libft.h"
 
 # include <limits.h>
-# include <stdio.h>
 
 enum	e_stack
 {
@@ -63,7 +62,9 @@ int				check_dup(int ac, char **av);
 int				check_all_args(int ac, char **av);
 void			parse(t_deque *stack, int ac, char **av);
 int				find_min(t_deque *stack);
+int				find_max(t_deque *stack);
 int				find_pos(t_deque *stack, int nb);
+int				find_closest_in_range(t_deque *stack, int low, int high);
 int				is_stack_sorted(t_deque *stack);
 int				is_stack_reverse_sorted(t_deque *stack);
 void			do_push(t_deque *stack[2], char *str);
@@ -72,8 +73,9 @@ void			do_rotate(t_deque *stack[2], char *str);
 void			do_rev_rotate(t_deque *stack[2], char *str);
 void			act_and_write(t_deque *stack[2], char *str);
 
+void			sort_three(t_deque *stack[2]);
 void			small_group(t_deque *stack[2]);
-int				is_exception(t_deque *stack[2]);
 void			big_group(t_deque *stack[2]);
+int				get_next_line(char **line);
 
 #endif

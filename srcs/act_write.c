@@ -20,7 +20,7 @@ void	do_push(t_deque *stack[2], char *str)
 		write(1, "pa", 2);
 		write(1, "\n", 1);
 	}
-	if (!ft_strncmp(str, "pb", 2))
+	if (!ft_strncmp(str, "pb", 3))
 	{
 		pb(stack);
 		write(1, "pb", 2);
