@@ -156,9 +156,12 @@ def main():
     normalized = normalize(args)
 
     # Try to read ops from stdin (piped), or run push_swap
+    ops = []
     if not sys.stdin.isatty():
-        ops = [line.strip() for line in sys.stdin if line.strip()]
-    else:
+        import select
+        if select.select([sys.stdin], [], [], 0.1)[0]:
+            ops = [line.strip() for line in sys.stdin if line.strip()]
+    if not ops:
         push_swap = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                  "push_swap")
         str_args = [str(a) for a in args]
